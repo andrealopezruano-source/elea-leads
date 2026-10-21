@@ -16,6 +16,7 @@ limits:
   new_emails_per_day: 20
   apollo_reveal_credits_per_day: 25
   pages_per_niche_per_day: 40
+  query_variants: 10
   min_days_active_oldest_ad: 30
   min_active_ads: 3
 
@@ -35,6 +36,7 @@ meta:
 
 icp:
   employees: [1, 50]
+  max_page_likes: 150000    # por encima suele ser marca grande o de grupo
   decision_titles: [Founder, Co-founder, Cofundador, Cofundadora, Fundador, Fundadora, CEO, Owner, Gerente, Director de Marketing, Directora de Marketing, Head of Ecommerce, Director de Ecommerce, Directora de Ecommerce]
   exclude_domains: [amazon.es, zalando.es, elcorteingles.es, aliexpress.com, shein.com, temu.com]
   exclude_keywords: [agencia, agency, marketplace, dropshipping]
