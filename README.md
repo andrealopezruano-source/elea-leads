@@ -120,7 +120,7 @@ lanzarla a mano en claude.ai/code → Scheduled tasks.
   3. Dolor con empatía.
   4. Tres ideas rápidas.
   5. "Llevamos nosotras mismas Meta, Google y Amazon, sin permanencia".
-  6. CTA de bajo compromiso.
+  6. CTA: llamada de 15 minutos o envío del dossier de servicios.
   7. Firma y línea de baja.
 - Prohibido: inventar datos, prometer resultados, hablar de precios, mencionar IA o automatización.
 - Sin observación verificable no hay email: el lead pasa a revisión manual.

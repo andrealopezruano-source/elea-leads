@@ -13,8 +13,11 @@ OPT_OUT = "Si no te interesa, responde \"no\" y no vuelvo a escribirte."
 BANNED = [
     "sinergia", "escalar exponencialmente", "exponencial", "garantizamos", "garantizado", "roas de",
     "inteligencia artificial", " ia ", "automatiza", "automático", "automática", "€/mes", "euros al mes",
-    "precio", "tarifa", "bienvenido", "bienvenida", "bienvenid@", "querido", "querida", "estimado", "estimada",
+    "precio", "tarifa", "te grabo un vídeo", "vídeo de 3 minutos", "bienvenido", "bienvenida", "bienvenid@", "querido", "querida", "estimado", "estimada",
 ]
+# CTA permitidos: llamada corta o dossier de servicios
+CTAS = ["¿Te cuadra una llamada de 15 minutos la semana que viene?",
+        "¿Quieres que te enviemos nuestro dossier de servicios?"]
 # Formas con género dirigidas a quien lee (nosotras sí usamos femenino para nosotras)
 GENDERED_READER = [
     r"\binteresad[oa]s?\b", r"\bsegur[oa] de\b", r"\bcansad[oa]\b", r"\bsol[oa] (?:con|en)\b",
@@ -52,6 +55,8 @@ def validate(subject: str, body: str, kind: str = "inicial") -> list[str]:
             problems.append(f"posible género hacia quien lee: «{m.group(0)}»")
     if OPT_OUT not in body and kind != "seg1":
         problems.append("falta la línea de baja")
+    if kind == "inicial" and not any(c in body for c in CTAS):
+        problems.append("el CTA debe ser la llamada de 15 minutos o el dossier de servicios")
     if "Andrea" not in body:
         problems.append("falta la firma")
     return problems

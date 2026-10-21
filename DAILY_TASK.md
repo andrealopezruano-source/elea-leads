@@ -90,7 +90,8 @@ Reglas completas en `README.md` → "Reglas del email". Resumen:
   3. Dolor con empatía.
   4. "Tres ideas rápidas" concretas y aplicables.
   5. "Llevamos nosotras mismas Meta, Google y Amazon, sin permanencia."
-  6. CTA de bajo compromiso.
+  6. CTA: "¿Te cuadra una llamada de 15 minutos la semana que viene?" o "¿Quieres que te enviemos
+     nuestro dossier de servicios?" (nunca el vídeo de 3 minutos).
   7. Firma y línea de baja.
 - Prohibido: inventar datos, prometer resultados, hablar de precio, mencionar IA o automatización.
 - Si no hay una observación verificable → estado `revision_manual`.
