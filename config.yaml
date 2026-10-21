@@ -4,7 +4,8 @@ send_mode: draft            # draft | send — cambia a "send" solo tras validar
 sender:
   name: Andrea
   company: Elea Marketing
-  email: ""                 # PENDIENTE: dirección de Google Workspace
+  email: andrealopezruano@gmail.com
+  intro: "Soy Andrea, de Elea Marketing. Con mi hermana Elena estamos haciendo mini auditorías a {sector} y {marca} estaba en la lista, así que te cuento lo que hemos visto."
 
 schedule:
   timezone: Europe/Madrid
@@ -13,12 +14,15 @@ schedule:
   send_window: ["09:00", "13:00"]
 
 limits:
-  new_emails_per_day: 20
-  apollo_reveal_credits_per_day: 25
+  new_emails_per_day: 10    # plan gratuito de Apollo: empezamos con 8–10
+  apollo_reveal_credits_per_day: 0   # 0 = no gastar créditos; el email lo añade Andrea a mano
   pages_per_day: 30          # páginas nuevas cualificadas a investigar cada día
   query_variants: 10
   min_days_active_oldest_ad: 30
   min_active_ads: 3
+
+contact:
+  fill_recipient: false     # false = borrador sin destinatario (Andrea lo busca en la web y envía)
 
 scoring:
   weights: {inversion: 30, icp: 25, oportunidades: 25, contacto: 20}

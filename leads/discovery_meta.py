@@ -175,6 +175,60 @@ class AdLibrary:
     async def page_ads(self, page_id: str):
         return await self._load(self._url(view_all_page_id=page_id, search_type="page"))
 
+    async def select_page(self, name: str, page_id: str | None = None) -> dict:
+        """Flujo de la interfaz: España → Todos los anuncios → escribir el nombre → elegir la página
+        del anunciante en el desplegable de sugerencias. Devuelve la página elegida, el resto de
+        páginas sugeridas (por si la marca tiene varias) y sus anuncios activos."""
+        page = self._page
+        suggestions: list[dict] = []
+
+        async def on_response(r):
+            if "graphql" in r.url:
+                try:
+                    t = await r.text()
+                except Exception:  # noqa: BLE001
+                    return
+                if '"typeahead_suggestions"' in t:
+                    try:
+                        res = json.loads(t)["data"]["ad_library_main"]["typeahead_suggestions"]["page_results"]
+                        suggestions[:] = res or suggestions
+                    except (KeyError, TypeError, json.JSONDecodeError):
+                        pass
+
+        page.on("response", on_response)
+        try:
+            for attempt in range(3):
+                await asyncio.sleep(random.uniform(*self.delay))
+                resp = await page.goto(f"{LIBRARY}?country={self.country}", wait_until="domcontentloaded", timeout=60000)
+                await page.wait_for_timeout(3000)
+                if resp and resp.status == 200:
+                    break
+                await asyncio.sleep(20 * (attempt + 1))
+            else:
+                raise RateLimited(f"select_page {name}")
+            await page.get_by_text("Categoría de anuncio", exact=True).click()
+            await page.get_by_text("Todos los anuncios", exact=True).first.click()
+            box = page.locator("input[type='search']").first
+            await box.click()
+            await box.fill(name[:-1])
+            await box.press_sequentially(name[-1], delay=200)
+            await page.wait_for_timeout(5000)
+            if not suggestions:
+                return {"chosen": None, "suggestions": [], "total": None, "ads": []}
+            chosen = next((s for s in suggestions if page_id and s["page_id"] == page_id), None) or next(
+                (s for s in suggestions if s["name"].lower().startswith(name.lower())), suggestions[0])
+            option = page.locator("[role='option']").filter(has_text=chosen["name"]).first
+            await option.click()
+            await page.wait_for_load_state("domcontentloaded")
+            await page.wait_for_timeout(5000)
+            total, ads, _ = parse_library_html(await page.content())
+            if not ads and total != 0:  # la navegación por clic no trajo datos: misma vista por URL
+                total, ads = await self.page_ads(chosen["page_id"])
+            return {"chosen": chosen, "suggestions": suggestions, "total": total, "ads": ads,
+                    "url": page.url}
+        finally:
+            page.remove_listener("response", on_response)
+
 
 def summarize_page(page_id: str, total: int | None, ads: list[dict], today=None) -> dict:
     """Métricas y señales a nivel de página a partir de sus anuncios activos."""
@@ -296,13 +350,26 @@ async def discover(cfg: dict, niche_keys: list[str], known_domains: set[str], ma
                         rejected.append({"page_id": pid, "page_name": s["page_name"], "domain": s["domain"],
                                          "motivo": "marca demasiado grande", "niche": key})
                         continue
+                    # Análisis a nivel de página: se elige la página del anunciante en el desplegable
                     try:
-                        total, page_ads = await lib.page_ads(pid)
+                        sel = await lib.select_page(s["page_name"], pid)
                     except RateLimited:
                         errors.append({"fase": "meta", "ref": pid, "error": "rate limit / captcha"})
                         continue
-                    page = summarize_page(pid, total, page_ads)
-                    page.update({"niche": key, "found_with_query": info["query"]})
+                    except Exception as e:  # noqa: BLE001  (cambio en la interfaz de Meta)
+                        log.warning("Desplegable falló para %s (%s); uso la vista de página por URL", pid, e)
+                        total, page_ads = await lib.page_ads(pid)
+                        sel = {"chosen": {"page_id": pid}, "suggestions": [], "total": total, "ads": page_ads}
+                    if not sel["chosen"] or sel["chosen"]["page_id"] != pid:
+                        errors.append({"fase": "meta", "ref": pid, "error": "la página no aparece en el desplegable"})
+                        continue
+                    page = summarize_page(pid, sel["total"], sel["ads"])
+                    page.update({
+                        "niche": key, "found_with_query": info["query"],
+                        "ig_username": sel["chosen"].get("ig_username"), "ig_followers": sel["chosen"].get("ig_followers"),
+                        "similar_pages": [f'{x["name"]} ({x["page_id"]})' for x in sel["suggestions"]
+                                          if x["page_id"] != pid and s["page_name"].lower() in x["name"].lower()][:5],
+                    })
                     ok, why = is_candidate(page, cfg, known)
                     if ok:
                         qualified.append(page)
