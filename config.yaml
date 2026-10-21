@@ -15,7 +15,7 @@ schedule:
 limits:
   new_emails_per_day: 20
   apollo_reveal_credits_per_day: 25
-  pages_per_niche_per_day: 40
+  pages_per_day: 30          # páginas nuevas cualificadas a investigar cada día
   query_variants: 10
   min_days_active_oldest_ad: 30
   min_active_ads: 3

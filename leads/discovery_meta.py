@@ -199,7 +199,8 @@ def summarize_page(page_id: str, total: int | None, ads: list[dict], today=None)
         "anuncio_mas_30_dias": days_oldest >= 30,
         "min_3_activos": (total or n) >= 3,
         "varias_versiones": any(a["versions"] > 1 for a in ads),
-        "usa_catalogo_dpa": formats.get("DPA", 0) + formats.get("DCO", 0) > 0,
+        # DPA, o creatividad dinámica que tira del catálogo ({{product.name}})
+        "usa_catalogo_dpa": any(a["format"] == "DPA" or "{{product." in (a["title"] or "") for a in ads),
     }
     signals_inhouse = {
         "poca_variedad_copy": n >= 3 and unique_bodies <= max(1, n // 3),

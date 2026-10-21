@@ -12,7 +12,7 @@ import logging
 import os
 import re
 from datetime import date
-from urllib.parse import urljoin, urlparse
+from urllib.parse import quote_plus, urljoin, urlparse
 
 import requests
 from playwright.async_api import async_playwright
@@ -85,21 +85,27 @@ def pagespeed(url: str) -> dict | None:
         return None
 
 
-def amazon_presence(brand: str) -> dict:
-    """Busca la marca en amazon.es. Devuelve nº de resultados con la marca en el título."""
+async def amazon_presence(browser, brand: str) -> dict:
+    """Busca la marca en amazon.es con el navegador. Solo concluye si la página de resultados cargó."""
+    ctx = await browser.new_context(locale="es-ES", user_agent=(
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"))
     try:
-        r = requests.get("https://www.amazon.es/s", params={"k": brand}, timeout=30, headers={
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
-                          "Chrome/141.0 Safari/537.36", "Accept-Language": "es-ES,es;q=0.9"})
-        if r.status_code != 200 or "captcha" in r.text.lower()[:5000]:
+        page = await ctx.new_page()
+        resp = await page.goto("https://www.amazon.es/s?k=" + quote_plus(brand), wait_until="domcontentloaded",
+                               timeout=60000)
+        await page.wait_for_timeout(3000)
+        titles = await page.eval_on_selector_all(
+            "div[data-component-type='s-search-result'] h2", "els => els.map(e => e.innerText)")
+        if not resp or resp.status != 200 or not titles:
             return {"checked": False}
-        titles = re.findall(r'<h2[^>]*aria-label="([^"]+)"', r.text) or re.findall(
-            r'<span class="a-size-base-plus a-color-base a-text-normal">([^<]+)</span>', r.text)
-        b = brand.lower()
-        hits = [t for t in titles if b in t.lower()]
-        return {"checked": True, "results_with_brand": len(hits), "examples": hits[:3]}
+        words = [w for w in re.findall(r"\w+", brand.lower()) if len(w) > 2]
+        hits = [t for t in titles if words and all(w in t.lower() for w in words)]
+        return {"checked": True, "query": brand, "results": len(titles), "results_with_brand": len(hits),
+                "examples": hits[:3], "top_results": [t[:80] for t in titles[:3]]}
     except Exception:  # noqa: BLE001
         return {"checked": False}
+    finally:
+        await ctx.close()
 
 
 def _find_links(links: list[dict], hints: list[str], domain: str) -> list[str]:
@@ -236,9 +242,9 @@ async def research_site(domain: str, product_urls: list[str], brand: str | None 
         out["social_links"] = sorted({l["href"].split("?")[0] for l in links
                                       if re.search(r"instagram\.com/|tiktok\.com/@|linkedin\.com/", l["href"])})[:6]
         out["links_to_amazon"] = any("amazon." in l["href"] for l in links)
+        if brand:
+            out["amazon"] = await amazon_presence(browser, brand)
         await browser.close()
 
     out["pagespeed"] = await asyncio.to_thread(pagespeed, out.get("final_url", home_url))
-    if brand:
-        out["amazon"] = await asyncio.to_thread(amazon_presence, brand)
     return out

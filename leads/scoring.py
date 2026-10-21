@@ -43,6 +43,8 @@ def score_lead(page: dict, web: dict, contact: dict, judgement: dict, cfg: dict)
         icp = 0; reasons.append("tienda generalista / dropshipping")
     if judgement.get("marca_de_grupo") or judgement.get("agencia_detectada"):
         icp = 0; reasons.append("marca de grupo o con agencia")
+    if judgement.get("demasiado_grande"):
+        icp = 0; reasons.append(f"demasiado grande ({judgement['demasiado_grande']})")
     icp = min(icp, 25)
 
     # Oportunidades claras (25): solo hallazgos con evidencia verificable
