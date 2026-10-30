@@ -335,6 +335,10 @@ async def discover(cfg: dict, niche_keys: list[str], known_domains: set[str], ma
                     errors.append({"fase": "meta", "ref": q, "error": "rate limit / captcha"})
                     log.error("Rate limit en búsqueda %r: %s", q, e)
                     continue
+                except Exception as e:  # noqa: BLE001  (timeout de navegación)
+                    errors.append({"fase": "meta", "ref": q, "error": f"{type(e).__name__}: {str(e)[:120]}"})
+                    log.error("Búsqueda %r falló: %s", q, e)
+                    continue
                 for a in ads:
                     if a["page_id"] and a["page_id"] not in seen_pages:
                         seen_pages[a["page_id"]] = {"niche": key, "query": q, "sample": a}
