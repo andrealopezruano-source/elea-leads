@@ -1,0 +1,75 @@
+# Configuración del sistema de captación de leads de Elea Marketing
+
+send_mode: draft            # draft | send — cambia a "send" solo tras validar los borradores
+sender:
+  name: Andrea
+  company: Elea Marketing
+  email: andrealopezruano@gmail.com
+  intro: "Soy Andrea, de Elea Marketing. Con mi hermana Elena estamos haciendo mini auditorías a {sector} y {marca} estaba en la lista, así que te cuento lo que hemos visto."
+
+schedule:
+  timezone: Europe/Madrid
+  run_time: "08:30"         # ejecución diaria L–V
+  send_days: [tue, wed, thu]
+  send_window: ["09:00", "13:00"]
+
+limits:
+  new_emails_per_day: 10    # plan gratuito de Apollo: empezamos con 8–10
+  apollo_reveal_credits_per_day: 0   # 0 = no gastar créditos; el email lo añade Andrea a mano
+  pages_per_day: 30          # páginas nuevas cualificadas a investigar cada día
+  query_variants: 10
+  min_days_active_oldest_ad: 30
+  min_active_ads: 3
+
+contact:
+  fill_recipient: false     # false = borrador sin destinatario (Andrea lo busca en la web y envía)
+
+scoring:
+  weights: {inversion: 30, icp: 25, oportunidades: 25, contacto: 20}
+  email_threshold: 70
+  nurture_threshold: 50
+
+followups:
+  - {day: 3, type: insight}
+  - {day: 7, type: cierre}
+
+meta:
+  country: ES
+  ad_type: ALL
+  active_status: ACTIVE
+
+icp:
+  employees: [1, 50]
+  max_page_likes: 150000    # por encima suele ser marca grande o de grupo
+  decision_titles: [Founder, Co-founder, Cofundador, Cofundadora, Fundador, Fundadora, CEO, Owner, Gerente, Director de Marketing, Directora de Marketing, Head of Ecommerce, Director de Ecommerce, Directora de Ecommerce]
+  exclude_domains: [amazon.es, zalando.es, elcorteingles.es, aliexpress.com, shein.com, temu.com]
+  exclude_keywords: [agencia, agency, marketplace, dropshipping]
+
+# Cada nicho genera además variantes de oferta automáticamente (envío gratis, -20%, nueva colección…)
+niches:
+  cosmetica_natural:
+    label: Cosmética natural
+    queries: [cosmética natural, cosmética ecológica, crema facial natural, sérum vitamina c, champú sólido, cosmética vegana, jabón artesanal]
+  moda_sostenible:
+    label: Moda sostenible
+    queries: [moda sostenible, ropa algodón orgánico, moda ética, ropa hecha en España, slow fashion]
+  calzado:
+    label: Calzado
+    queries: [zapatillas veganas, calzado artesanal, zapatos hechos en España, alpargatas, sandalias piel]
+  joyeria:
+    label: Joyería
+    queries: [joyería plata, joyas personalizadas, pendientes artesanales, joyería minimalista, anillos oro]
+  decoracion:
+    label: Decoración
+    queries: [decoración hogar, textil hogar, cerámica artesanal, velas aromáticas, lámparas diseño]
+  suplementos:
+    label: Suplementos
+    queries: [suplementos naturales, colágeno, proteína vegana, vitaminas, magnesio]
+  mascotas:
+    label: Mascotas
+    queries: [pienso natural perros, accesorios perro, comida gatos natural, snacks perro, collar perro]
+  cafe:
+    label: Café
+    queries: [café de especialidad, café en grano, tostadores de café, suscripción café, cápsulas compostables]
+
+offer_terms: [envío gratis, "-20%", nueva colección, rebajas, black friday, oferta]
