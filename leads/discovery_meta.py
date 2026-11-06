@@ -20,7 +20,8 @@ from playwright.async_api import async_playwright
 log = logging.getLogger("discovery")
 
 LIBRARY = "https://www.facebook.com/ads/library/"
-CHROMIUM = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
+import glob as _glob
+CHROMIUM = next(iter(sorted(_glob.glob("/opt/pw-browsers/chromium-*/chrome-linux*/chrome"), reverse=True)), "/opt/pw-browsers/chromium-1194/chrome-linux/chrome")
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
