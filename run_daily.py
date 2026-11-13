@@ -67,7 +67,9 @@ def cmd_discover(args, cfg):
     if args.known and Path(args.known).exists():
         known = {normalize_domain(l) for l in Path(args.known).read_text().splitlines() if l.strip()}
     errors: list = []
-    res = asyncio.run(discover(cfg, todays_niches(cfg), known, cfg["limits"]["pages_per_day"], errors))
+    partial = DAY_DIR / "discovered.partial.json"
+    res = asyncio.run(discover(cfg, todays_niches(cfg), known, cfg["limits"]["pages_per_day"], errors,
+                               checkpoint=lambda d: write_json(partial, d)))
     res["errors"] = errors
     write_json(out, res)
     print(f"Descubiertas {len(res['qualified'])} páginas nuevas, {len(res['rejected'])} descartadas, "
