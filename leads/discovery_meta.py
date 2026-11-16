@@ -5,6 +5,7 @@ de anunciante: primero busca por palabra clave para encontrar páginas candidata
 y después abre la vista de cada página (view_all_page_id) para medir su actividad.
 """
 from __future__ import annotations
+import os
 
 import asyncio
 import json
@@ -20,7 +21,9 @@ from playwright.async_api import async_playwright
 log = logging.getLogger("discovery")
 
 LIBRARY = "https://www.facebook.com/ads/library/"
-CHROMIUM = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
+# Chromium preinstalado en la nube; la ruta versionada cambia con la imagen, así que se busca la que exista
+CHROMIUM = next((p for p in (os.environ.get("CHROMIUM_PATH"), "/opt/pw-browsers/chromium",
+                             "/opt/pw-browsers/chromium-1194/chrome-linux/chrome") if p and os.path.exists(p)), None)
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
