@@ -7,6 +7,7 @@ y después abre la vista de cada página (view_all_page_id) para medir su activi
 from __future__ import annotations
 
 import asyncio
+import os
 import json
 import logging
 import random
@@ -20,7 +21,7 @@ from playwright.async_api import async_playwright
 log = logging.getLogger("discovery")
 
 LIBRARY = "https://www.facebook.com/ads/library/"
-CHROMIUM = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
+CHROMIUM = os.environ.get("CHROMIUM_PATH", "/opt/pw-browsers/chromium")
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
