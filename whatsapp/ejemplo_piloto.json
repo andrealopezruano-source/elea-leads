@@ -1,0 +1,767 @@
+[
+ {
+  "id": "stefanysen",
+  "pdf": "Plan_digital_Stefany_Sen.pdf",
+  "nombre": "Stefany Sen",
+  "para": "Stefany Sen",
+  "sector": "Calzado de mujer · Segovia",
+  "mes": "noviembre de 2026",
+  "fecha": "18 de noviembre de 2026",
+  "fecha_corta": "18/11/2026",
+  "headline": "Que cada vídeo que tanto gusta en Instagram termine en una venta en vuestra web.",
+  "stats": [
+   [
+    "225.000",
+    "seguidores en Instagram"
+   ],
+   [
+    "26",
+    "anuncios activos hoy en Meta"
+   ],
+   [
+    "24/48 h",
+    "envío en península, con tienda física en Segovia"
+   ]
+  ],
+  "hoy": [
+   [
+    "1",
+    "Vuestros vídeos enganchan",
+    "24 de vuestros 26 anuncios activos son vídeos con vuestros diseños."
+   ],
+   [
+    "2",
+    "Pago aplazado y WhatsApp",
+    "Aplázame a 4 meses sin intereses y botón de WhatsApp en la web."
+   ],
+   [
+    "!",
+    "Dos anuncios llevan a un error",
+    "Los del 9 de noviembre abren la ficha del botín Colette, que da error 404."
+   ],
+   [
+    "!",
+    "Muchos anuncios llevan al buscador",
+    "Los vídeos de Caroline, Kate o Ilian abren una búsqueda, no la ficha del zapato."
+   ],
+   [
+    "!",
+    "Web lenta en el móvil",
+    "En nuestra prueba, la imagen principal de la portada tardó 13,6 s en aparecer."
+   ]
+  ],
+  "anuncio": {
+   "img": "shots/stefany_ad.png",
+   "titulo": "Biblioteca de anuncios · Stefany Sen",
+   "caption": "Anuncio activo desde el 9 de noviembre. Su botón lleva a la ficha del botín Colette.",
+   "pill": "Destino: página no encontrada (404)"
+  },
+  "web_shot": {
+   "img": "shots/stefany_404.png",
+   "titulo": "stefanysen.com · botín Colette",
+   "caption": "Esto es lo que ve hoy quien hace clic: «404 NOT FOUND», en inglés."
+  },
+  "audit_nota": "Revisada el 18/11/2026 con un móvil y una conexión 4G simulada.",
+  "auditoria": [
+   [
+    "bad",
+    "Mejorar",
+    "Carga lenta en el móvil",
+    "La imagen principal de la portada tardó 13,6 s en aparecer; Google recomienda menos de 2,5 s. La portada pesa 2 MB y hace 172 peticiones."
+   ],
+   [
+    "bad",
+    "Mejorar",
+    "Anuncios que llevan a un error",
+    "Dos anuncios activos abren una ficha que ya no existe y muchos otros, el buscador de la web."
+   ],
+   [
+    "mid",
+    "Revisar",
+    "El aviso de cookies tapa media pantalla",
+    "En el móvil ocupa la mitad de abajo antes de ver ningún zapato."
+   ],
+   [
+    "mid",
+    "Revisar",
+    "Sin opiniones en la ficha",
+    "En la ficha del zapato Elody no se ven reseñas de clientas."
+   ],
+   [
+    "ok",
+    "Bien",
+    "Pago aplazado y WhatsApp",
+    "Aplázame y WhatsApp ayudan a decidir en el móvil: ya los tenéis."
+   ]
+  ],
+  "flujo": [
+   [
+    "Os descubren",
+    "Vuestros vídeos llegan a mujeres que buscan zapato cómodo de tacón medio."
+   ],
+   [
+    "Llegan al zapato",
+    "Cada anuncio abre la ficha exacta del modelo del vídeo."
+   ],
+   [
+    "Les recordamos",
+    "A quien vio un modelo y no compró, se lo volvemos a enseñar."
+   ],
+   [
+    "Google trabaja",
+    "Anuncios cuando buscan botines, Oxford o tacón medio cómodo."
+   ],
+   [
+    "Preventas llenas",
+    "Lanzamientos como Neko con lista de espera desde los anuncios."
+   ],
+   [
+    "Sabéis qué funciona",
+    "Ventas por anuncio y por modelo, cada mes."
+   ]
+  ],
+  "hariamos": [
+   [
+    "Meta Ads",
+    [
+     "Catálogo con vuestros modelos",
+     "Cada vídeo a su ficha",
+     "Remarketing a visitas de la web",
+     "Preventas con lista de espera"
+    ]
+   ],
+   [
+    "Google Ads",
+    [
+     "Shopping con vuestro catálogo",
+     "Búsquedas por modelo y tacón",
+     "Medición de ventas",
+     "Ajuste semanal"
+    ]
+   ],
+   [
+    "Para vuestra marca",
+    [
+     "Informe mensual claro",
+     "Sin permanencia larga",
+     "Vuestros vídeos de siempre",
+     "Nada técnico que tocar"
+    ]
+   ]
+  ],
+  "cta": "Escribidme por aquí y os enseño cómo quedarían vuestros anuncios llevando cada vídeo a su zapato.",
+  "fuentes": "Datos públicos consultados el 18/11/2026: Biblioteca de anuncios de Meta y vuestra web (prueba en móvil con 4G simulado). Si algo no está al día, decídnoslo y lo corregimos."
+ },
+ {
+  "id": "trasmiszapatos",
+  "pdf": "Plan_digital_Tras_mis_zapatos.pdf",
+  "nombre": "Tras mis zapatos",
+  "para": "Noelia, de Tras mis zapatos",
+  "sector": "Calzado artesanal de mujer · Madrid",
+  "mes": "noviembre de 2026",
+  "fecha": "18 de noviembre de 2026",
+  "fecha_corta": "18/11/2026",
+  "headline": "Que vuestro Black Friday llene la lista de espera y que el resto del año venda igual de bien.",
+  "stats": [
+   [
+    "74",
+    "reseñas de clientas en la web"
+   ],
+   [
+    "100 %",
+    "calzado fabricado en España"
+   ],
+   [
+    "24",
+    "anuncios activos hoy en Meta"
+   ]
+  ],
+  "hoy": [
+   [
+    "1",
+    "Calzado con historia propia",
+    "Diseño y fabricación española, con una marca muy personal."
+   ],
+   [
+    "2",
+    "Ya preparáis el Black Friday",
+    "Ocho anuncios captan la lista de acceso prioritario."
+   ],
+   [
+    "!",
+    "El formulario sale en inglés",
+    "El texto legal del acceso prioritario dice «By submitting this form…»."
+   ],
+   [
+    "!",
+    "El mismo gancho en cuatro anuncios",
+    "«¿No sabes qué zapato ponerte para ir a la oficina?» se repite del 25/10 al 13/11."
+   ],
+   [
+    "!",
+    "No estáis en Amazon",
+    "Buscando «Tras mis zapatos» en Amazon.es no aparece la marca."
+   ]
+  ],
+  "anuncio": {
+   "img": "shots/tmz_ad.png",
+   "titulo": "Biblioteca de anuncios · Tras mis zapatos",
+   "caption": "Uno de los ocho anuncios del acceso prioritario de Black Friday, activo desde el 8 de noviembre.",
+   "pill": "8 anuncios → la misma página"
+  },
+  "web_shot": {
+   "img": "shots/tmz_bf.png",
+   "titulo": "trasmiszapatos.com · acceso prioritario",
+   "caption": "Quien hace clic encuentra el texto legal del formulario en inglés, justo encima del botón."
+  },
+  "audit_nota": "Revisada el 18/11/2026 con un móvil y una conexión 4G simulada.",
+  "auditoria": [
+   [
+    "bad",
+    "Mejorar",
+    "Formulario de Black Friday en inglés",
+    "El texto legal habla de «autodialer», «Text HELP» y «Msg & data rates»: en España resta confianza."
+   ],
+   [
+    "mid",
+    "Revisar",
+    "Carga algo lenta en el móvil",
+    "La imagen principal de la portada tardó 4,6 s en aparecer; Google recomienda menos de 2,5 s."
+   ],
+   [
+    "ok",
+    "Bien",
+    "74 reseñas visibles",
+    "Las opiniones de clientas aparecen en la web: es vuestra mejor prueba."
+   ],
+   [
+    "ok",
+    "Bien",
+    "Botón de WhatsApp",
+    "Para dudas de talla o de horma, es el mejor atajo: ya lo tenéis."
+   ],
+   [
+    "ok",
+    "Bien",
+    "10 % en la primera compra",
+    "Lo anunciáis igual en la web y en los anuncios."
+   ]
+  ],
+  "flujo": [
+   [
+    "Os descubren",
+    "Mujeres que buscan zapato cómodo y bonito para la oficina ven vuestros modelos."
+   ],
+   [
+    "Se apuntan",
+    "La lista de Black Friday, con un formulario claro y en español."
+   ],
+   [
+    "Compran",
+    "El día del acceso prioritario les llega el aviso y van directas a su talla."
+   ],
+   [
+    "Les recordamos",
+    "A quien vio un modelo y no compró, se lo volvemos a enseñar."
+   ],
+   [
+    "Amazon suma",
+    "Vuestros modelos más vendidos, también donde ya buscan zapatos."
+   ],
+   [
+    "Sabéis qué funciona",
+    "Ventas por anuncio y por gancho, cada mes."
+   ]
+  ],
+  "hariamos": [
+   [
+    "Meta Ads",
+    [
+     "Ganchos distintos por público",
+     "Lista de espera y lanzamientos",
+     "Catálogo para quien ya os visitó",
+     "Pruebas de creatividades"
+    ]
+   ],
+   [
+    "Google Ads",
+    [
+     "Shopping con vuestro catálogo",
+     "Búsquedas de calzado hecho en España",
+     "Medición de ventas",
+     "Ajuste semanal"
+    ]
+   ],
+   [
+    "Amazon",
+    [
+     "Alta y fichas de producto",
+     "Anuncios dentro de Amazon",
+     "Precios y stock al día",
+     "Informe por modelo"
+    ]
+   ]
+  ],
+  "cta": "Escríbeme por aquí y te enseño cómo quedaría vuestro Black Friday con ganchos nuevos y la lista bien llena.",
+  "fuentes": "Datos públicos consultados el 18/11/2026: Biblioteca de anuncios de Meta, Amazon.es y vuestra web (prueba en móvil con 4G simulado). Si algo no está al día, decídnoslo y lo corregimos."
+ },
+ {
+  "id": "calzadoslobo",
+  "pdf": "Plan_digital_Calzados_Lobo.pdf",
+  "nombre": "Calzados Lobo",
+  "para": "el equipo de Calzados Lobo",
+  "sector": "Alpargatería y zapatería · Madrid",
+  "mes": "noviembre de 2026",
+  "fecha": "18 de noviembre de 2026",
+  "fecha_corta": "18/11/2026",
+  "headline": "Que la tienda de la calle Toledo venda online todo el año, no solo en temporada.",
+  "stats": [
+   [
+    "1897",
+    "año de fundación, en la calle Toledo"
+   ],
+   [
+    "48.800",
+    "seguidores en Instagram"
+   ],
+   [
+    "15 al 52",
+    "tallas en algunos modelos, en más de 30 colores"
+   ]
+  ],
+  "hoy": [
+   [
+    "1",
+    "Una tienda centenaria",
+    "Cuatro generaciones de la familia Lobo en el mismo local."
+   ],
+   [
+    "2",
+    "Envío gratis y recogida en tienda",
+    "Desde 60 € en península, o recogida en la tienda de Madrid."
+   ],
+   [
+    "!",
+    "Un anuncio de San Isidro en noviembre",
+    "Sigue activo desde el 30 de septiembre, con #SanIsidro2025."
+   ],
+   [
+    "!",
+    "Casi todo lleva a las merceditas",
+    "5 de vuestros 6 anuncios abren la misma categoría, también el de alpargatas."
+   ],
+   [
+    "!",
+    "Web lenta en el móvil",
+    "En nuestra prueba, la imagen principal de la portada tardó 11,4 s en aparecer."
+   ]
+  ],
+  "anuncio": {
+   "img": "shots/lobo_ad.png",
+   "titulo": "Biblioteca de anuncios · Calzados Lobo",
+   "caption": "Activo desde el 30 de septiembre de 2026: «San Isidro está a la vuelta de la esquina…».",
+   "pill": "#SanIsidro2025 · activo en noviembre"
+  },
+  "web_shot": {
+   "img": "shots/lobo_merceditas.png",
+   "titulo": "calzadoslobo.com · merceditas",
+   "caption": "Es el destino de 5 de los 6 anuncios, también del vídeo de cuidado de alpargatas."
+  },
+  "audit_nota": "Revisada el 18/11/2026 con un móvil y una conexión 4G simulada.",
+  "auditoria": [
+   [
+    "bad",
+    "Mejorar",
+    "Carga lenta en el móvil",
+    "La imagen principal de la portada tardó 11,4 s en aparecer; Google recomienda menos de 2,5 s. La portada pesa 3 MB y hace 211 peticiones."
+   ],
+   [
+    "mid",
+    "Revisar",
+    "Sin opiniones a la vista",
+    "En la portada y en las merceditas no se ven reseñas de clientes, y 130 años de tienda dan para muchas."
+   ],
+   [
+    "mid",
+    "Revisar",
+    "Sin botón de WhatsApp",
+    "Con tantas tallas y colores, una consulta rápida por WhatsApp ayuda a comprar."
+   ],
+   [
+    "ok",
+    "Bien",
+    "Envío gratis desde 60 €",
+    "Y recogida en la tienda de Madrid: está claro desde la primera línea."
+   ],
+   [
+    "ok",
+    "Bien",
+    "Tallas del 15 al 52",
+    "Una variedad que pocas tiendas online tienen: merece estar en los anuncios."
+   ]
+  ],
+  "flujo": [
+   [
+    "Os encuentran",
+    "Quien busca alpargatas, merceditas o bambas en Google ve Lobo primero."
+   ],
+   [
+    "Cada anuncio, su producto",
+    "Alpargatas a alpargatas, merceditas a merceditas, niños a niños."
+   ],
+   [
+    "Por temporada",
+    "Verano, San Isidro, otoño y Navidad, cada uno a su tiempo."
+   ],
+   [
+    "Les recordamos",
+    "A quien visitó la web y no compró."
+   ],
+   [
+    "Amazon suma",
+    "Vuestras alpargatas, también donde ya las buscan."
+   ],
+   [
+    "Sabéis qué funciona",
+    "Ventas por campaña y por producto, cada mes."
+   ]
+  ],
+  "hariamos": [
+   [
+    "Meta Ads",
+    [
+     "Calendario de campañas por temporada",
+     "Catálogo por categoría",
+     "Remarketing a visitas de la web",
+     "Público de Madrid para la tienda"
+    ]
+   ],
+   [
+    "Google Ads",
+    [
+     "Shopping con vuestro catálogo",
+     "Búsquedas «alpargatas», «merceditas»",
+     "Medición de ventas y llamadas",
+     "Ajuste semanal"
+    ]
+   ],
+   [
+    "Amazon",
+    [
+     "Alta y fichas de producto",
+     "Anuncios dentro de Amazon",
+     "Tallas y colores bien ordenados",
+     "Informe por producto"
+    ]
+   ]
+  ],
+  "cta": "Escribidme por aquí y os enseño cómo quedaría Lobo con campañas por temporada y por producto.",
+  "fuentes": "Datos públicos consultados el 18/11/2026: Biblioteca de anuncios de Meta, Amazon.es y vuestra web (prueba en móvil con 4G simulado). Si algo no está al día, decídnoslo y lo corregimos."
+ },
+ {
+  "id": "flordeasoka",
+  "pdf": "Plan_digital_Flordeasoka.pdf",
+  "nombre": "flordeasoka",
+  "para": "el equipo de flordeasoka",
+  "sector": "Zapatos de novia y fiesta · Madrid",
+  "mes": "noviembre de 2026",
+  "fecha": "18 de noviembre de 2026",
+  "fecha_corta": "18/11/2026",
+  "headline": "Que cada novia que os ve en Instagram encuentre su zapato y lo compre sin dudar.",
+  "stats": [
+   [
+    "21.300",
+    "me gusta en Facebook"
+   ],
+   [
+    "17",
+    "anuncios activos hoy en Meta"
+   ],
+   [
+    "Made in Spain",
+    "zapatos de novia hechos en España"
+   ]
+  ],
+  "hoy": [
+   [
+    "1",
+    "Zapatos de novia hechos en España",
+    "Una colección propia, con tienda en Madrid."
+   ],
+   [
+    "2",
+    "Envío gratis y WhatsApp",
+    "Envío gratis a España y Portugal y WhatsApp en la web."
+   ],
+   [
+    "!",
+    "Un nombre interno en un anuncio",
+    "El del 26 de octubre se titula «002_Top zapatos de tacón bonitos y cómodos»."
+   ],
+   [
+    "!",
+    "Textos en inglés para novias de aquí",
+    "«Novias de Otoño» lleva «Perfect white shoes - elevate your style…»."
+   ],
+   [
+    "!",
+    "Web pesada en el móvil",
+    "La portada hace 440 peticiones y tardó 8,2 s en mostrarse en nuestra prueba."
+   ]
+  ],
+  "anuncio": {
+   "img": "shots/asoka_ad.png",
+   "titulo": "Biblioteca de anuncios · flordeasoka",
+   "caption": "Anuncio activo desde el 26 de octubre de 2026, con el nombre interno como título.",
+   "pill": "Título: «002_Top zapatos de tacón…»"
+  },
+  "web_shot": {
+   "img": "shots/asoka_col.png",
+   "titulo": "flordeasoka.com · destino del anuncio",
+   "caption": "La colección «Top zapatos de tacón bonitos y cómodos», a la que lleva ese anuncio."
+  },
+  "audit_nota": "Revisada el 18/11/2026 con un móvil y una conexión 4G simulada.",
+  "auditoria": [
+   [
+    "bad",
+    "Mejorar",
+    "Portada muy pesada",
+    "440 peticiones y 3,3 MB. La imagen principal tardó 8,2 s en aparecer; Google recomienda menos de 2,5 s."
+   ],
+   [
+    "mid",
+    "Revisar",
+    "Mensajes mezclados en inglés",
+    "Varios anuncios para España llevan el texto principal en inglés."
+   ],
+   [
+    "ok",
+    "Bien",
+    "WhatsApp en la web",
+    "Para una novia con dudas de talla o de tacón, es el mejor atajo."
+   ],
+   [
+    "ok",
+    "Bien",
+    "Envío gratis a España y Portugal",
+    "Está claro desde la primera línea de la web."
+   ],
+   [
+    "ok",
+    "Bien",
+    "Black Friday con lista previa",
+    "El acceso anticipado ya capta emails antes del 24/11."
+   ]
+  ],
+  "flujo": [
+   [
+    "Os descubren",
+    "Novias que buscan zapato cómodo para bailar ven vuestros modelos."
+   ],
+   [
+    "Encuentran el suyo",
+    "Cada anuncio, en español, a la colección o al modelo exacto."
+   ],
+   [
+    "Piden cita o compran",
+    "En la web o en vuestra tienda."
+   ],
+   [
+    "Google trabaja",
+    "Anuncios cuando buscan «zapatos de novia cómodos»."
+   ],
+   [
+    "Les recordamos",
+    "A quien vio un modelo y aún no ha decidido."
+   ],
+   [
+    "Sabéis qué funciona",
+    "Ventas y citas por campaña, cada mes."
+   ]
+  ],
+  "hariamos": [
+   [
+    "Meta Ads",
+    [
+     "Textos en español para España",
+     "Catálogo de novia e invitada",
+     "Remarketing a visitas de la web",
+     "Públicos por fecha de boda"
+    ]
+   ],
+   [
+    "Google Ads",
+    [
+     "Búsquedas «zapatos de novia»",
+     "Shopping con vuestro catálogo",
+     "Medición de ventas y citas",
+     "Ajuste semanal"
+    ]
+   ],
+   [
+    "Para vuestra marca",
+    [
+     "Informe mensual claro",
+     "Sin permanencia larga",
+     "Vuestras fotos y vídeos",
+     "Nada técnico que tocar"
+    ]
+   ]
+  ],
+  "cta": "Escribidme por aquí y os enseño cómo quedarían vuestras campañas de novia, en español y modelo a modelo.",
+  "fuentes": "Datos públicos consultados el 18/11/2026: Biblioteca de anuncios de Meta y vuestra web (prueba en móvil con 4G simulado). Si algo no está al día, decídnoslo y lo corregimos."
+ },
+ {
+  "id": "johnluck",
+  "pdf": "Plan_digital_John_Luck.pdf",
+  "nombre": "John Luck",
+  "para": "el equipo de John Luck Artesanos",
+  "sector": "Zapatillas de ciclismo artesanales · La Rioja",
+  "mes": "noviembre de 2026",
+  "fecha": "18 de noviembre de 2026",
+  "fecha_corta": "18/11/2026",
+  "headline": "Que el ciclista que busca zapatilla cómoda os encuentre y compre su talla desde el anuncio.",
+  "stats": [
+   [
+    "1987",
+    "fabricando zapatillas de ciclismo"
+   ],
+   [
+    "18",
+    "anuncios activos hoy en Meta"
+   ],
+   [
+    "A medida",
+    "zapatillas personalizadas y horma ancha"
+   ]
+  ],
+  "hoy": [
+   [
+    "1",
+    "Un producto que pocos tienen",
+    "Zapatillas hechas a mano, a medida y con horma ancha."
+   ],
+   [
+    "2",
+    "Ya os anunciáis todo el año",
+    "18 anuncios activos, casi todos de catálogo."
+   ],
+   [
+    "!",
+    "Un anuncio de la Navidad pasada",
+    "Activo desde el 29 de diciembre de 2025: «Entrega antes de Navidad»."
+   ],
+   [
+    "!",
+    "12 de 18 anuncios llevan a la portada",
+    "Y la primera pantalla en el móvil es solo texto, sin ninguna zapatilla."
+   ],
+   [
+    "!",
+    "No estáis en Amazon",
+    "Buscando «John Luck ciclismo» en Amazon.es no aparece la marca."
+   ]
+  ],
+  "anuncio": {
+   "img": "shots/johnluck_ad.png",
+   "titulo": "Biblioteca de anuncios · John Luck",
+   "caption": "Activo desde el 29 de diciembre de 2025, casi once meses, con el mensaje de Navidad.",
+   "pill": "«Entrega antes de Navidad» · desde dic. 2025"
+  },
+  "web_shot": {
+   "img": "shots/jl_home.png",
+   "titulo": "johnluck.pro · portada",
+   "caption": "Es el destino de 12 de los 18 anuncios. En la primera pantalla del móvil no aparece ninguna zapatilla ni ningún precio."
+  },
+  "audit_nota": "Revisada el 18/11/2026 con un móvil y una conexión 4G simulada.",
+  "auditoria": [
+   [
+    "bad",
+    "Mejorar",
+    "Portada sin producto a la vista",
+    "Quien llega desde un anuncio ve un titular y un párrafo; las zapatillas quedan mucho más abajo."
+   ],
+   [
+    "mid",
+    "Revisar",
+    "Carga algo lenta en el móvil",
+    "La imagen principal de la portada tardó 6,8 s en aparecer; Google recomienda menos de 2,5 s."
+   ],
+   [
+    "mid",
+    "Revisar",
+    "Sin opiniones en la ficha",
+    "En la ficha de las Gaudí Wide no se ven reseñas de ciclistas."
+   ],
+   [
+    "ok",
+    "Bien",
+    "Fichas completas",
+    "Precio, tallas del 37 al 48 y botón de compra a la vista en la ficha."
+   ],
+   [
+    "ok",
+    "Bien",
+    "Horma ancha y barefoot",
+    "Categorías propias para un problema real: merecen anuncios propios."
+   ]
+  ],
+  "flujo": [
+   [
+    "Os encuentran",
+    "Ciclistas que buscan zapatilla cómoda, horma ancha o a medida."
+   ],
+   [
+    "Llegan a su modelo",
+    "Cada anuncio, a su ficha: MTB, carretera, gravel o invierno."
+   ],
+   [
+    "Google trabaja",
+    "Anuncios cuando buscan «zapatillas ciclismo horma ancha»."
+   ],
+   [
+    "Les recordamos",
+    "A quien vio un modelo y no eligió talla."
+   ],
+   [
+    "Amazon suma",
+    "Vuestros modelos, también donde ya buscan material de ciclismo."
+   ],
+   [
+    "Sabéis qué funciona",
+    "Ventas por anuncio y por modelo, cada mes."
+   ]
+  ],
+  "hariamos": [
+   [
+    "Meta Ads",
+    [
+     "Campañas por temporada",
+     "Cada anuncio a su ficha",
+     "Horma ancha y a medida",
+     "Remarketing a visitas de la web"
+    ]
+   ],
+   [
+    "Google Ads",
+    [
+     "Búsquedas de horma ancha y barefoot",
+     "Shopping con vuestro catálogo",
+     "Medición de ventas",
+     "Ajuste semanal"
+    ]
+   ],
+   [
+    "Amazon",
+    [
+     "Alta y fichas de producto",
+     "Anuncios dentro de Amazon",
+     "Tallas bien ordenadas",
+     "Informe por modelo"
+    ]
+   ]
+  ],
+  "cta": "Escribidme por aquí y os enseño cómo quedarían vuestras campañas llevando cada ciclista a su zapatilla.",
+  "fuentes": "Datos públicos consultados el 18/11/2026: Biblioteca de anuncios de Meta, Amazon.es y vuestra web (prueba en móvil con 4G simulado). Si algo no está al día, decídnoslo y lo corregimos."
+ }
+]
