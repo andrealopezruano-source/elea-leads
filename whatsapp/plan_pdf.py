@@ -108,22 +108,22 @@ def build(d):
     a=d["anuncio"]; w=d["web_shot"]
     au="".join(f'<div class="ai"><div class="tag {c}">{e(lbl)}</div><div><h4>{e(t)}</h4><p>{e(p)}</p></div></div>' for c,lbl,t,p in d["auditoria"])
     p2=f'''<section class="page"><div class="top">{L()}<span>Plan para {nm}</span></div>
-<h2>Así se ven hoy vuestros anuncios y vuestra web</h2><div class="subt">Capturas reales, tomadas el {e(d["fecha"])}.</div>
-<div class="two" style="margin-top:1mm"><div><div class="shot"><div class="bar"><span>Biblioteca de anuncios de Meta</span><span>{e(d["fecha_corta"])}</span></div><img class="adimg" src="{b64(a["img"])}"></div><div class="cap">{e(a["caption"])}</div>{f'<div class="pill">{e(a["pill"])}</div>' if a.get("pill") else ""}</div>
-<div class="phone"><div class="shot"><div class="bar"><span>{e(w["titulo"])}</span><span>móvil</span></div><img src="{b64(w["img"])}"></div><div class="cap">{e(w["caption"])}</div></div></div>
-<h2 style="font-size:24pt;margin-top:8mm">Vuestra web, revisada en el móvil</h2><div class="subt">{e(d["audit_nota"])}</div><div class="audit">{au}</div>
+<h2>{e(d.get("h2_p2","Así se ven hoy vuestros anuncios y vuestra web"))}</h2><div class="subt">{e(d.get("sub_p2","Capturas reales, tomadas el "+d["fecha"]+"."))}</div>
+<div class="two" style="margin-top:1mm"><div><div class="shot"><div class="bar"><span>{e(a.get("titulo") or "Biblioteca de anuncios de Meta")}</span><span>{e(d["fecha_corta"])}</span></div><img class="adimg" src="{b64(a["img"])}"></div><div class="cap">{e(a["caption"])}</div>{f'<div class="pill">{e(a["pill"])}</div>' if a.get("pill") else ""}</div>
+<div class="phone"><div class="shot"><div class="bar"><span>{e(w["titulo"])}</span><span>{e(w.get("tag","móvil"))}</span></div><img src="{b64(w["img"])}" style="{"object-fit:contain;background:#F3F3F7" if w.get("fit")=="contain" else ("object-position:"+w["pos"] if w.get("pos") else "")}"></div><div class="cap">{e(w["caption"])}</div></div></div>
+<h2 style="font-size:24pt;margin-top:8mm">{e(d.get("h2_audit","Vuestra web, revisada en el móvil"))}</h2><div class="subt">{e(d["audit_nota"])}</div><div class="audit">{au}</div>
 {page_foot(2,T)}</section>'''
     fl="".join(f'<div class="fi"><div class="ic">{i+1}</div><div><h4>{e(t)}</h4><p>{e(p)}</p></div></div>' for i,(t,p) in enumerate(d["flujo"]))
     bx="".join(f'<div class="box"><div class="eyebrow">{e(t)}</div><ul>{"".join(f"<li>{e(x)}</li>" for x in items)}</ul></div>' for t,items in d["hariamos"])
     bl=d.get("briefing") or ["Qué vídeos grabar, producto a producto","Guiones con el gancho de los primeros 3 segundos","Lista de tomas: plano, luz y formato (Reels y Stories)","Ideas basadas en lo que ya funciona en vuestro sector"]
     brief=f'<div class="box brief"><div class="eyebrow">Briefing creativo · incluido</div><div class="bt">Os decimos qué grabar para anunciaros con calidad, sin depender de una productora.</div><ul>{"".join(f"<li>{e(x)}</li>" for x in bl)}</ul></div>'
     p3=f'''<section class="page"><div class="top">{L()}<span>Plan para {nm}</span></div>
-<h2 style="font-size:22pt">Así funcionaría {nm} vendiendo más online</h2><div class="flow">{fl}</div>
-<h2 style="font-size:22pt;margin-top:5mm">Lo que haríamos</h2><div class="subt">Dos especialistas: Paid Media (Google y Meta) y Amazon. Solo lo que tiene sentido para {nm}.</div>{bx}{brief}
+<h2 style="font-size:22pt">{e(d.get("h2_flujo","Así funcionaría "+d["nombre"]+" vendiendo más online"))}</h2><div class="flow">{fl}</div>
+<h2 style="font-size:22pt;margin-top:5mm">Lo que haríamos</h2><div class="subt">{e(d.get("sub_hariamos","Dos especialistas: Paid Media (Google y Meta) y Amazon. Solo lo que tiene sentido para "+d["nombre"]+"."))}</div>{bx}{brief}
 <div class="sec" style="margin-top:4mm"><div class="eyebrow">Cómo lo hacemos</div><div class="steps">
-<div class="st"><b>1</b><h4>Nos contáis vuestro producto</h4><p>Una llamada de 20 minutos o unos audios.</p></div>
+<div class="st"><b>1</b><h4>{e(d.get("paso1","Nos contáis vuestro producto"))}</h4><p>Una llamada de 20 minutos o unos audios.</p></div>
 <div class="st"><b>2</b><h4>Os damos el briefing creativo</h4><p>Qué vídeos grabar, con guiones y tomas.</p></div>
-<div class="st"><b>3</b><h4>Lo montamos y arranca</h4><p>Y cada mes os contamos qué vende y qué no.</p></div></div></div>
+<div class="st"><b>3</b><h4>Lo montamos y arranca</h4><p>{e(d.get("paso3","Y cada mes os contamos qué vende y qué no."))}</p></div></div></div>
 <div class="cta"><h2>¿Lo vemos?</h2><p>{e(d["cta"])}</p><div class="sig">Andrea · Elea Marketing</div><div class="links"><a href="{IG_URL}">{ig("#FAF3C6","5mm")} @elea.marketing</a><a href="{WEB_URL}">Nuestra web →</a></div></div>
 <div class="src">{e(d["fuentes"])}</div>
 {page_foot(3,T)}</section>'''
