@@ -59,33 +59,42 @@ h2{font-size:30pt;font-weight:800;line-height:1.05;letter-spacing:-.015em;margin
 .tag.bad{background:#F8E3E3;color:#A33A3A}.tag.mid{background:var(--cream);color:var(--warn)}.tag.ok{background:var(--okbg);color:var(--ok)}
 .ai h4{font-size:12pt;font-weight:600;line-height:1.25}
 .ai p{font-size:10.2pt;color:var(--muted);line-height:1.38;margin-top:.8mm}
-.flow{display:grid;grid-template-columns:1fr 1fr;gap:3.5mm 7mm;margin-top:4mm}
-.fi{display:grid;grid-template-columns:13mm 1fr;gap:4mm}
-.ic{width:13mm;height:13mm;border-radius:3.5mm;background:var(--plum);position:relative;color:var(--cream);display:grid;place-items:center;font-weight:800;font-size:13pt}
-.fi h4{font-size:13pt;font-weight:600}
-.fi p{font-size:10pt;color:var(--muted);line-height:1.35;margin-top:.6mm}
-.box{border:.35mm solid var(--line);border-radius:5mm;padding:3.8mm 6mm 3.8mm;margin-top:2.5mm}
-.box ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1.8mm 6mm;margin-top:2.5mm}
-.box li{font-size:11.5pt;padding-left:5mm;position:relative;line-height:1.3}
+.flow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm 5mm;margin-top:3mm}
+.fi{display:grid;grid-template-columns:9mm 1fr;gap:2.5mm}
+.ic{width:9mm;height:9mm;border-radius:2.6mm;font-size:11pt!important;background:var(--plum);position:relative;color:var(--cream);display:grid;place-items:center;font-weight:800;font-size:13pt}
+.fi h4{font-size:11.5pt;font-weight:600;line-height:1.2}
+.fi p{font-size:9.4pt;color:var(--muted);line-height:1.35;margin-top:.6mm}
+.box{border:.35mm solid var(--line);border-radius:5mm;padding:3.2mm 6mm 3.2mm;margin-top:2.2mm}
+.box ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1.4mm 6mm;margin-top:2mm}
+.box li{font-size:10.8pt;padding-left:5mm;position:relative;line-height:1.3}
 .box li:before{content:"";position:absolute;left:0;top:1.8mm;width:2.3mm;height:2.3mm;border-radius:50%;background:var(--coral)}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm;margin-top:4mm}
-.st{background:var(--lav2);border-radius:5mm;padding:3.5mm 4.5mm}
-.st b{font-size:18pt;color:var(--coral);font-weight:800;display:block}
-.st h4{font-size:12pt;font-weight:700;margin-top:2mm}
-.st p{font-size:10.2pt;color:var(--muted);margin-top:1mm;line-height:1.35}
+.st{background:var(--lav2);border-radius:4mm;padding:3mm 4mm;display:grid;grid-template-columns:7mm 1fr;column-gap:2mm}
+.st b{grid-row:span 2;font-size:16pt;line-height:1;color:var(--coral);font-weight:800;display:block}
+.st h4{font-size:10.8pt;font-weight:700;margin-top:0;line-height:1.2}
+.st p{font-size:9.4pt;color:var(--muted);margin-top:1mm;line-height:1.35}
 .note{font-size:11.5pt;font-weight:500;margin-top:5mm}
-.cta{background:var(--plum);color:#fff;border-radius:6mm;padding:5.5mm 9mm 5.5mm;margin-top:4mm;position:relative;overflow:hidden}
+.cta{flex-shrink:0;background:var(--plum);color:#fff;border-radius:6mm;padding:5.5mm 9mm 5.5mm;margin-top:4mm;position:relative;overflow:hidden}
 .cta:after{content:"";position:absolute;right:-12mm;top:-12mm;width:50mm;height:50mm;border-radius:50%;border:7mm solid rgba(255,255,255,.12)}
-.cta h2{color:var(--cream);margin:0;font-size:28pt}
-.cta p{font-size:13pt;margin-top:3mm;max-width:120mm;line-height:1.45}
-.cta .sig{color:var(--cream);font-weight:700;margin-top:4mm;font-size:12pt}
+.cta h2{color:var(--cream);margin:0;font-size:24pt}
+.cta p{font-size:12pt;margin-top:2mm;max-width:120mm;line-height:1.45}
+.cta .sig{color:var(--cream);font-weight:700;margin-top:3mm;font-size:12pt}
+.brief{background:var(--cream2);border-color:var(--cream2)}
+.brief .bt{font-size:12pt;font-weight:600;margin-top:1.5mm;line-height:1.35}
+.fl{display:flex;gap:5mm;align-items:center}
+.foot a{color:var(--plum);text-decoration:none;font-weight:600}
+.links{display:flex;gap:8mm;margin-top:2.5mm;font-size:12pt;font-weight:600}
+.links a{color:#FAF3C6;text-decoration:none}
 .src{font-size:8.8pt;color:var(--muted);margin-top:4mm;line-height:1.4}
 """
 def logo(): return f'<svg class="logo" viewBox="0 0 600 261"><defs><mask id="m{logo.n}" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="261"><image href="{LOGO}" width="600" height="261"/></mask></defs><rect width="600" height="261" fill="#4F0C28" mask="url(#m{logo.n})"/></svg>'
 logo.n=0
 def L():
     logo.n+=1; return logo()
-def page_foot(n,tot): return f'<div class="foot">{L()}<span>eleamarketing.netlify.app · {n}/{tot}</span></div>'
+IG_URL="https://www.instagram.com/elea.marketing/"
+WEB_URL="https://eleamarketing.netlify.app/"
+def ig(c="currentColor",sz="4.2mm"): return f'<svg viewBox="0 0 24 24" style="width:{sz};height:{sz};vertical-align:-0.8mm" fill="none" stroke="{c}" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="{c}" stroke="none"/></svg>'
+def page_foot(n,tot): return f'<div class="foot">{L()}<span class="fl"><a href="{IG_URL}">{ig()} elea.marketing</a><a href="{WEB_URL}">Nuestra web →</a><span>{n}/{tot}</span></span></div>'
 def build(d):
     T=3; nm=e(d["nombre"])
     tiles="".join(f'<div class="tile"><b>{e(a)}</b><span>{e(b)}</span></div>' for a,b in d["stats"])
@@ -106,14 +115,16 @@ def build(d):
 {page_foot(2,T)}</section>'''
     fl="".join(f'<div class="fi"><div class="ic">{i+1}</div><div><h4>{e(t)}</h4><p>{e(p)}</p></div></div>' for i,(t,p) in enumerate(d["flujo"]))
     bx="".join(f'<div class="box"><div class="eyebrow">{e(t)}</div><ul>{"".join(f"<li>{e(x)}</li>" for x in items)}</ul></div>' for t,items in d["hariamos"])
+    bl=d.get("briefing") or ["Qué vídeos grabar, producto a producto","Guiones con el gancho de los primeros 3 segundos","Lista de tomas: plano, luz y formato (Reels y Stories)","Ideas basadas en lo que ya funciona en vuestro sector"]
+    brief=f'<div class="box brief"><div class="eyebrow">Briefing creativo · incluido</div><div class="bt">Os decimos qué grabar para anunciaros con calidad, sin depender de una productora.</div><ul>{"".join(f"<li>{e(x)}</li>" for x in bl)}</ul></div>'
     p3=f'''<section class="page"><div class="top">{L()}<span>Plan para {nm}</span></div>
-<h2 style="font-size:24pt">Así funcionaría {nm} vendiendo más online</h2><div class="flow">{fl}</div>
-<h2 style="font-size:24pt;margin-top:6mm">Lo que haríamos</h2><div class="subt">Dos especialistas: Paid Media (Google y Meta) y Amazon. Solo lo que tiene sentido para {nm}.</div>{bx}
+<h2 style="font-size:22pt">Así funcionaría {nm} vendiendo más online</h2><div class="flow">{fl}</div>
+<h2 style="font-size:22pt;margin-top:5mm">Lo que haríamos</h2><div class="subt">Dos especialistas: Paid Media (Google y Meta) y Amazon. Solo lo que tiene sentido para {nm}.</div>{bx}{brief}
 <div class="sec" style="margin-top:4mm"><div class="eyebrow">Cómo lo hacemos</div><div class="steps">
 <div class="st"><b>1</b><h4>Nos contáis vuestro producto</h4><p>Una llamada de 20 minutos o unos audios.</p></div>
-<div class="st"><b>2</b><h4>Lo montamos nosotras</h4><p>Con vuestras fotos, vuestro catálogo y vuestros precios.</p></div>
-<div class="st"><b>3</b><h4>Lo revisáis y arranca</h4><p>Y cada mes os contamos qué vende y qué no.</p></div></div></div>
-<div class="cta"><h2>¿Lo vemos?</h2><p>{e(d["cta"])}</p><div class="sig">Andrea · Elea Marketing · eleamarketing.netlify.app</div></div>
+<div class="st"><b>2</b><h4>Os damos el briefing creativo</h4><p>Qué vídeos grabar, con guiones y tomas.</p></div>
+<div class="st"><b>3</b><h4>Lo montamos y arranca</h4><p>Y cada mes os contamos qué vende y qué no.</p></div></div></div>
+<div class="cta"><h2>¿Lo vemos?</h2><p>{e(d["cta"])}</p><div class="sig">Andrea · Elea Marketing</div><div class="links"><a href="{IG_URL}">{ig("#FAF3C6","5mm")} @elea.marketing</a><a href="{WEB_URL}">Nuestra web →</a></div></div>
 <div class="src">{e(d["fuentes"])}</div>
 {page_foot(3,T)}</section>'''
     return f'<!doctype html><html lang="es"><head><meta charset="utf-8"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"><style>{CSS}</style></head><body>{p1}{p2}{p3}</body></html>'
