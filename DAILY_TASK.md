@@ -116,3 +116,21 @@ Reglas completas en `README.md` → "Reglas del email". Resumen:
    - créditos de Apollo.
 3. Termina con un resumen corto: cifras del día, errores (rate limit de Meta, cambios en la interfaz,
    etc.) y la lista de borradores que esperan a que Andrea añada el destinatario.
+
+## 9. Captación por WhatsApp (desde el 18/11/2026)
+Formato «Captación Córdoba»: plan en PDF por marca y mensaje de WhatsApp que Andrea envía a mano desde el panel
+**Captación Ecommerce** (https://claude.ai/artifact/KxJXzSTnmXKComTEPTQUw9). Herramientas en `whatsapp/` (ver su README).
+
+Para cada lead cualificado o en nutrir con 60 puntos o más:
+1. **Comprueba cada anuncio que vayas a citar** por su ID con `whatsapp/verify_ads.py` (Activo/Inactivo y fechas).
+   La vista de página de la Ad Library puede incluir anuncios ya apagados: sin «Activo» no se cita.
+2. **Teléfono**: `whatsapp/phones.py` y, si no sale, `whatsapp/phones2.py`. Prioridad: enlace de WhatsApp de la
+   propia web → móvil → fijo. Sin teléfono publicado → se queda con email.
+3. **Web**: `whatsapp/audit.py` (velocidad en móvil 4G simulado y captura) y lectura del texto visible de la portada.
+   Solo se cita lo que se ve en pantalla, no lo que solo está en el código.
+4. **Contenido**: añade la marca a un lote de `whatsapp/lotes/` (felicitación con un dato real, punto A comprobado,
+   punto B sin cifras prometidas), `whatsapp/ad_crop.py` para la captura del anuncio, `whatsapp/assemble.py` y
+   `whatsapp/gen_check.py` (genera el PDF y avisa si una página se desborda).
+5. **Panel**: sube el PDF a `planes/` del artifact y crea el documento en la colección `leads` con `ArtifactData`.
+   Nunca envíes nada: Andrea adjunta el PDF y envía desde su móvil (máximo 10–15 al día).
+6. **CRM**: columna `telefono_y_canal` (AF). Si la marca también tiene borrador de email, se escribe por un solo canal.
