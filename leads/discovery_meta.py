@@ -20,7 +20,9 @@ from playwright.async_api import async_playwright
 log = logging.getLogger("discovery")
 
 LIBRARY = "https://www.facebook.com/ads/library/"
-CHROMIUM = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
+import os as _os
+CHROMIUM = next((c for c in ("/opt/pw-browsers/chromium", "/opt/pw-browsers/chromium-1194/chrome-linux/chrome")
+                 if _os.path.exists(c)), None)
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
@@ -156,18 +158,44 @@ class AdLibrary:
         return LIBRARY + "?" + "&".join(f"{k}={quote(str(v))}" for k, v in base.items())
 
     async def _load(self, url: str) -> tuple[int | None, list[dict]]:
-        for attempt in range(3):
-            await asyncio.sleep(random.uniform(*self.delay))
-            resp = await self._page.goto(url, wait_until="domcontentloaded", timeout=60000)
-            await self._page.wait_for_timeout(4000)
-            html = await self._page.content()
-            total, ads, captcha = parse_library_html(html)
-            if resp and resp.status == 200 and not captcha and (ads or total == 0):
-                return total, ads
-            wait = 30 * (attempt + 1)
-            log.warning("Ad Library sin datos (status=%s captcha=%s); reintento en %ss", resp and resp.status, captcha, wait)
-            await asyncio.sleep(wait)
-        raise RateLimited(url)
+        # Meta retira los <script> con los datos al hidratar la página, así que se parsean las
+        # respuestas HTML crudas de la Ad Library (incluida la recarga tras su reto anti-bots).
+        raws: list[str] = []
+
+        async def on_response(r):
+            if r.url.startswith(LIBRARY + "?") and r.request.resource_type == "document":
+                try:
+                    raws.append(await r.text())
+                except Exception:  # noqa: BLE001
+                    pass
+
+        self._page.on("response", on_response)
+        try:
+            for attempt in range(4):
+                await asyncio.sleep(random.uniform(*self.delay))
+                raws.clear()
+                resp = await self._page.goto(url, wait_until="domcontentloaded", timeout=60000)
+                await self._page.wait_for_timeout(6000)
+                best = (None, [], False)
+                for raw in raws + [await self._page.content()]:
+                    t, a, c = parse_library_html(raw)
+                    if len(a) > len(best[1]) or (best[0] is None and t is not None):
+                        best = (t, a, c)
+                total, ads, captcha = best
+                log.debug("load status=%s docs=%s total=%s ads=%s", resp and resp.status, len(raws), total, len(ads))
+                if ads:
+                    return total, ads
+                # count 0 con anuncios en pantalla = respuesta vacía tras el reto: se repite
+                if total == 0 and attempt >= 1 and not re.search(r"Identificador de la biblioteca|Library ID",
+                                                                 await self._page.inner_text("body")):
+                    return 0, []
+                wait = 15 * (attempt + 1)
+                log.warning("Ad Library sin datos (status=%s captcha=%s total=%s); reintento en %ss",
+                            resp and resp.status, captcha, total, wait)
+                await asyncio.sleep(wait)
+            raise RateLimited(url)
+        finally:
+            self._page.remove_listener("response", on_response)
 
     async def search_keyword(self, q: str):
         return await self._load(self._url(q=q, search_type="keyword_unordered"))
