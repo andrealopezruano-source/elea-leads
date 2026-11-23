@@ -20,7 +20,7 @@ from playwright.async_api import async_playwright
 log = logging.getLogger("discovery")
 
 LIBRARY = "https://www.facebook.com/ads/library/"
-CHROMIUM = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
+CHROMIUM = next((p for p in ("/opt/pw-browsers/chromium-1194/chrome-linux/chrome", "/opt/pw-browsers/chromium") if __import__("os").path.exists(p)), None)
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
@@ -162,7 +162,8 @@ class AdLibrary:
             await self._page.wait_for_timeout(4000)
             html = await self._page.content()
             total, ads, captcha = parse_library_html(html)
-            if resp and resp.status == 200 and not captcha and (ads or total == 0):
+            # Meta a veces responde 403 con la página completa: lo que cuenta es que vengan datos
+            if resp and not captcha and (ads or (total == 0 and resp.status == 200)):
                 return total, ads
             wait = 30 * (attempt + 1)
             log.warning("Ad Library sin datos (status=%s captcha=%s); reintento en %ss", resp and resp.status, captcha, wait)
@@ -201,7 +202,7 @@ class AdLibrary:
                 await asyncio.sleep(random.uniform(*self.delay))
                 resp = await page.goto(f"{LIBRARY}?country={self.country}", wait_until="domcontentloaded", timeout=60000)
                 await page.wait_for_timeout(3000)
-                if resp and resp.status == 200:
+                if resp and resp.status in (200, 403) and await page.locator("input[type='search']").count():
                     break
                 await asyncio.sleep(20 * (attempt + 1))
             else:
