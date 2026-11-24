@@ -343,7 +343,7 @@ def is_candidate(page: dict, cfg: dict, known_domains: set[str]) -> tuple[bool, 
 
 
 async def discover(cfg: dict, niche_keys: list[str], known_domains: set[str], max_pages: int,
-                   errors: list | None = None) -> dict:
+                   errors: list | None = None, partial_path=None) -> dict:
     """Devuelve {'qualified': [...], 'rejected': [...], 'queries': n}."""
     errors = errors if errors is not None else []
     known = set(known_domains)
@@ -404,6 +404,10 @@ async def discover(cfg: dict, niche_keys: list[str], known_domains: set[str], ma
                         known.add(page["domain"])
                         log.info("✓ %s (%s) %s anuncios, desde %s", page["page_name"], page["domain"],
                                  page["active_ads"], page["oldest_active_ad"])
+                        if partial_path:  # guarda tras cada página: si se corta, no se pierde nada
+                            with open(partial_path, "w") as fh:
+                                json.dump({"qualified": qualified, "rejected": rejected, "queries": n_queries,
+                                           "errors": errors}, fh, ensure_ascii=False)
                     else:
                         rejected.append({"page_id": pid, "page_name": page["page_name"], "domain": page["domain"],
                                          "motivo": why, "niche": key})
